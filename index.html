@@ -1,0 +1,236 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#241A1E" />
+    <meta name="description" content="The Midnight Spine is a calm, clever reading companion for choosing your next read." />
+    <title>The Midnight Spine — choose your next read</title>
+    <link rel="preconnect" href="https://openlibrary.org" crossorigin />
+    <link rel="preconnect" href="https://covers.openlibrary.org" crossorigin />
+    <link rel="stylesheet" href="styles.css" />
+    <script defer src="app.js"></script>
+    <noscript><style>.app-loader{display:none!important}body.is-loading .app-shell{opacity:1!important;transform:none!important}</style></noscript>
+  </head>
+  <body class="is-loading" aria-busy="true">
+    <a class="skip-link" href="#main">Skip to content</a>
+    <div class="app-loader" id="app-loader" role="status" aria-live="polite">
+      <div class="loader-mark" aria-hidden="true"><span></span><span></span><span></span></div>
+      <p class="loader-wordmark">the midnight <em>spine</em></p>
+      <figure class="loader-quote" id="loader-quote" aria-hidden="true">
+        <blockquote><p id="loader-quote-text"></p></blockquote>
+        <figcaption id="loader-quote-source"></figcaption>
+      </figure>
+      <p class="loader-status" id="loader-status">Setting the shelf…</p>
+      <div class="loader-track" aria-hidden="true"><span></span></div>
+    </div>
+    <div class="app-shell">
+      <aside class="sidebar" id="sidebar">
+        <div class="brand-lockup" aria-label="The Midnight Spine home">
+          <div class="brand-mark" aria-hidden="true"><span></span><span></span><span></span></div>
+          <div class="brand-name">the midnight<br /><em>spine</em></div>
+        </div>
+        <p class="sidebar-whisper">Small rituals.<br />Big stories.</p>
+        <nav class="primary-nav" aria-label="Main navigation">
+          <button class="nav-item active" data-view="dashboard"><span class="nav-icon">⌂</span><span>Today</span></button>
+          <button class="nav-item" data-view="tbr"><span class="nav-icon">▤</span><span>My TBR</span><span class="nav-count" id="tbr-count">0</span></button>
+          <button class="nav-item" data-view="log"><span class="nav-icon">◴</span><span>Reading log</span></button>
+          <button class="nav-item" data-view="goals"><span class="nav-icon">◎</span><span>Goals</span></button>
+        </nav>
+        <div class="sidebar-bottom">
+          <div class="mini-profile">
+            <div class="avatar avatar-small">AK</div>
+            <div><strong>Alex Kim</strong><span>Night-time reader</span></div>
+          </div>
+          <p class="sidebar-tip"><span class="tip-spark">✦</span> “A room without books is like a body without a soul.” <small>— Cicero</small></p>
+        </div>
+      </aside>
+
+      <main class="main-content" id="main">
+        <header class="topbar">
+          <div class="topbar-left">
+            <button class="mobile-menu" id="mobile-menu" aria-label="Open navigation">☰</button>
+            <span class="eyebrow" id="view-eyebrow"></span>
+          </div>
+          <form class="top-search-form" id="global-book-search-form" role="search">
+            <span aria-hidden="true">⌕</span>
+            <input id="global-book-search-query" type="search" autocomplete="off" placeholder="Search real books…" aria-label="Search real books on Open Library" />
+            <button type="submit">Search</button>
+          </form>
+          <div class="top-actions">
+            <button class="icon-button search-button" id="focus-search" aria-label="Search your library" title="Search your library">⌕</button>
+            <div class="avatar">AK</div>
+          </div>
+        </header>
+
+        <section class="page-view active" id="view-dashboard" aria-labelledby="dashboard-title">
+          <div class="page-intro intro-with-actions">
+            <div>
+              <span class="section-kicker">YOUR READING COMPASS</span>
+              <h1 id="dashboard-title">Find your next <em>chapter.</em></h1>
+              <p>Let your TBR do the talking. We’ll find the story that fits right now.</p>
+            </div>
+          </div>
+
+          <section class="home-search-results" id="home-book-search-wrap" hidden aria-labelledby="home-search-title">
+            <div class="section-heading"><div><span class="section-kicker">REAL BOOKS, RIGHT NOW</span><h2 id="home-search-title">Matches for <em id="home-search-query">your search</em></h2></div><div class="heading-actions"><button class="text-button back-results" type="button" data-action="clear-search">← Back to Today</button><button class="text-button" data-view="tbr">Open My TBR <span>→</span></button></div></div>
+            <div class="book-search-status" id="home-book-search-status" role="status" aria-live="polite"></div>
+            <div class="open-library-grid" id="home-book-search-results"></div>
+          </section>
+
+          <div class="hero-grid">
+            <section class="pick-card" aria-labelledby="pick-title">
+              <div class="card-topline"><span class="eyebrow light">A LITTLE SERENDIPITY</span><span class="card-dot"></span></div>
+              <div class="pick-layout">
+                <div class="feature-cover" id="pick-cover" data-cover-color="sage" aria-label="Selected book cover">
+                  <div class="cover-rings"></div><span class="cover-initials" id="pick-initials">ML</span><small>the midnight spine</small>
+                </div>
+                <div class="pick-copy">
+                  <span class="pick-label" id="pick-label">Your next read</span>
+                  <h2 id="pick-title">The Midnight Library</h2>
+                  <p class="pick-author" id="pick-author">Matt Haig</p>
+                  <div class="tag-row" id="pick-tags"><span class="tag tag-light">Speculative fiction</span><span class="tag tag-light">304 pages</span></div>
+                  <p class="pick-note" id="pick-note">A quiet, hopeful story for the part of you that is curious about the roads not taken.</p>
+                  <button class="button button-cream" id="choose-next"><span class="shuffle-mark">↻</span> Choose my next read</button>
+                  <button class="text-button pick-details" id="pick-details" type="button" data-action="open-book" data-id="">View book details <span>→</span></button>
+                </div>
+              </div>
+            </section>
+
+            <section class="weekly-card" aria-labelledby="weekly-title">
+              <div class="card-topline"><span class="eyebrow">THIS WEEK</span><span class="spark-line">↗</span></div>
+              <h2 id="weekly-title">Keep the<br /><em>pages turning.</em></h2>
+              <div class="week-chart" aria-label="Reading activity this week">
+                <div class="chart-bars"><i style="height: 27%"></i><i style="height: 55%"></i><i style="height: 43%"></i><i style="height: 78%"></i><i class="today" style="height: 64%"></i><i style="height: 36%"></i><i style="height: 18%"></i></div>
+                <div class="chart-days"><span>M</span><span>T</span><span>W</span><span>T</span><span>F</span><span>S</span><span>S</span></div>
+              </div>
+              <div class="weekly-footer"><strong id="week-pages">126</strong><span>pages this week</span><span class="trend-pill">+18%</span></div>
+            </section>
+          </div>
+
+          <div class="stats-row" aria-label="Reading summary">
+            <div class="stat"><span class="stat-icon book-icon">▥</span><div><strong id="stat-read">0</strong><span>books read</span></div><b class="stat-change">this year</b></div>
+            <div class="stat"><span class="stat-icon page-icon">◫</span><div><strong id="stat-pages">0</strong><span>pages turned</span></div><b class="stat-change up">+12%</b></div>
+            <div class="stat"><span class="stat-icon flame-icon">✦</span><div><strong id="stat-streak">12</strong><span>day reading streak</span></div><b class="stat-change warm">keep it up</b></div>
+          </div>
+
+          <div class="section-heading">
+            <div><span class="section-kicker">IN PROGRESS</span><h2>Keep the story moving</h2></div>
+            <button class="text-button" data-view="tbr">View all <span>→</span></button>
+          </div>
+          <div class="reading-grid" id="currently-reading"></div>
+
+          <div class="lower-grid">
+            <section class="panel challenge-panel" aria-labelledby="challenge-heading">
+              <div class="panel-heading"><div><span class="section-kicker" id="challenge-kicker">YOUR READING GOAL</span><h2 id="challenge-heading">Set a reading goal</h2></div><button class="more-button" data-view="goals" aria-label="View goals">···</button></div>
+              <div class="challenge-body"><div class="goal-ring" id="goal-ring"><span><strong id="goal-percent">0%</strong><small>complete</small></span></div><div class="goal-copy"><p id="goal-count-line"></p><p class="muted" id="goal-remaining-line"></p><button type="button" class="milestone milestone-button" data-view="goals"><span>✦</span><small id="goal-milestone-text"></small></button></div></div>
+            </section>
+            <section class="panel shelf-panel" aria-labelledby="shelf-heading">
+              <div class="panel-heading"><div><span class="section-kicker">SHELF SNAPSHOT</span><h2 id="shelf-heading">Waiting patiently</h2></div><button class="text-button" data-view="tbr">See shelf <span>→</span></button></div>
+              <div class="shelf-strip" id="shelf-strip"></div>
+              <div class="shelf-footer"><span><strong id="shelf-number">0</strong> books on your TBR</span><button class="add-inline" data-action="focus-search">⌕ Find books</button></div>
+            </section>
+          </div>
+        </section>
+
+        <section class="page-view" id="view-tbr" aria-labelledby="tbr-title">
+          <div class="page-intro intro-with-actions"><div><span class="section-kicker">THE STACK</span><h1 id="tbr-title">Your <em>to-be-read</em> shelf.</h1><p>Every good story starts with a little anticipation.</p></div></div>
+          <section class="discover-panel" aria-labelledby="discover-title">
+            <div class="discover-copy"><span class="section-kicker">FROM OPEN LIBRARY</span><h2 id="discover-title">Find a story that’s <em>already out there.</em></h2><p>Search millions of real book records, then send a favorite straight to your TBR.</p></div>
+            <form class="discover-form" id="book-search-form"><label class="discover-search"><span>⌕</span><input id="book-search-query" type="search" autocomplete="off" placeholder="Try “The Night Circus”" aria-label="Search Open Library by title" /><button class="button button-dark" type="submit">Search books <span>→</span></button></label><small>Powered by Open Library Search · cover images load from their Cover API</small></form>
+          </section>
+          <div class="book-search-status" id="book-search-status" role="status" aria-live="polite"></div>
+          <div class="open-library-grid" id="book-search-results"></div>
+          <div class="toolbar"><label class="search-field"><span>⌕</span><input id="book-search" type="search" placeholder="Search your shelf" /></label><div class="filter-pills"><button class="filter-pill active" data-filter="all">All <span id="all-count">0</span></button><button class="filter-pill" data-filter="tbr">TBR <span id="tbr-filter-count">0</span></button><button class="filter-pill" data-filter="reading">Reading <span id="reading-filter-count">0</span></button><button class="filter-pill" data-filter="completed">Read <span id="completed-filter-count">0</span></button></div></div>
+          <div class="book-grid" id="tbr-grid"></div>
+        </section>
+
+        <section class="page-view" id="view-log" aria-labelledby="log-title">
+          <div class="page-intro intro-with-actions"><div><span class="section-kicker">THE ARCHIVE</span><h1 id="log-title">Your reading <em>log.</em></h1><p>A quiet record of the stories that stayed with you.</p></div></div>
+          <div class="log-summary"><div><span class="section-kicker">THIS YEAR</span><strong id="log-books">0</strong><span>books finished</span></div><div><span class="section-kicker">FAVORITE GENRE</span><strong id="favorite-genre">—</strong><span id="favorite-genre-count">Keep exploring</span></div><div><span class="section-kicker">PAGES READ</span><strong id="log-pages">0</strong><span>pages crossed</span></div></div>
+          <div class="section-heading log-heading"><div><span class="section-kicker">FINISHED STORIES</span><h2>What you’ve read</h2></div></div>
+          <div class="toolbar log-toolbar"><span class="section-kicker">READING LOG VIEW</span><div class="filter-pills"><button class="filter-pill active" data-log-filter="all">All read <span id="log-all-count">0</span></button><button class="filter-pill" data-log-filter="reviewed">Reviewed <span id="reviewed-count">0</span></button><button class="filter-pill" data-log-filter="unreviewed">Needs review <span id="unreviewed-count">0</span></button></div></div>
+          <div class="log-list" id="log-list"></div>
+        </section>
+
+        <section class="page-view" id="view-goals" aria-labelledby="goals-title">
+          <div class="page-intro"><span class="section-kicker">AIM A LITTLE HIGHER</span><h1 id="goals-title">Reading <em>goals.</em></h1><p>Make room for the books you want to become.</p></div>
+
+          <section class="goal-setter" aria-labelledby="goal-setter-title">
+            <div class="goal-setter-copy">
+              <span class="section-kicker">SET YOUR TARGET</span>
+              <h2 id="goal-setter-title">I want to read <em id="gs-number-label">24</em> <span id="gs-unit-label">books</span> by <em id="gs-date-label">Dec 31</em>.</h2>
+              <p class="gs-pace" id="gs-pace" role="status" aria-live="polite"></p>
+            </div>
+            <form class="goal-setter-form" id="goal-setter-form" novalidate>
+              <div class="gs-field">
+                <label for="gs-target">How many books?</label>
+                <div class="stepper">
+                  <button type="button" data-action="goal-step" data-step="-1" aria-label="One fewer book">−</button>
+                  <input id="gs-target" type="number" min="1" max="999" step="1" inputmode="numeric" value="24" />
+                  <button type="button" data-action="goal-step" data-step="1" aria-label="One more book">+</button>
+                </div>
+                <div class="preset-row" aria-label="Quick picks">
+                  <button type="button" class="preset" data-action="goal-preset" data-value="12">12</button>
+                  <button type="button" class="preset" data-action="goal-preset" data-value="24">24</button>
+                  <button type="button" class="preset" data-action="goal-preset" data-value="36">36</button>
+                  <button type="button" class="preset" data-action="goal-preset" data-value="52">52</button>
+                </div>
+              </div>
+              <div class="gs-field">
+                <label for="gs-deadline">Finish by</label>
+                <input id="gs-deadline" type="date" />
+                <div class="preset-row">
+                  <button type="button" class="preset" data-action="goal-deadline" data-value="this-year">End of this year</button>
+                  <button type="button" class="preset" data-action="goal-deadline" data-value="next-year">End of next year</button>
+                </div>
+              </div>
+              <p class="field-error" id="gs-error" role="alert"></p>
+              <button class="button button-dark" id="gs-submit" type="submit">Save my goal <span>→</span></button>
+            </form>
+          </section>
+
+          <div class="section-heading goals-heading"><div><span class="section-kicker">YOUR PROGRESS</span><h2>Your goals</h2></div></div>
+          <div class="goals-grid" id="goals-grid"></div>
+        </section>
+
+        <section class="page-view" id="view-book" aria-label="Book details">
+          <div id="book-detail"></div>
+        </section>
+      </main>
+    </div>
+
+    <dialog class="modal" id="book-dialog" aria-labelledby="book-dialog-title">
+      <form method="dialog" id="book-form">
+        <div class="modal-heading"><div><span class="section-kicker">EDIT DETAILS</span><h2 id="book-dialog-title">Tweak the details.</h2></div><button class="modal-close" type="button" data-close-dialog aria-label="Close">×</button></div>
+        <input type="hidden" id="book-id" />
+        <div class="form-grid"><label>Title<input id="book-title" required placeholder="e.g. Sea of Tranquility" /></label><label>Author<input id="book-author" required placeholder="e.g. Emily St. John Mandel" /></label><label>Genre<input id="book-genre" placeholder="e.g. Literary fiction" /></label><label>Pages<input id="book-pages" type="number" min="1" placeholder="e.g. 304" /></label><label class="full-field">Cover image URL <span class="optional">optional</span><input id="book-cover" type="url" placeholder="https://…" /></label></div>
+        <div class="modal-actions"><button class="button button-ghost" type="button" data-close-dialog>Cancel</button><button class="button button-dark" id="save-book" value="default">Save changes <span>→</span></button></div>
+      </form>
+    </dialog>
+
+    <dialog class="modal compact-modal" id="progress-dialog" aria-labelledby="progress-dialog-title">
+      <form method="dialog" id="progress-form"><div class="modal-heading"><div><span class="section-kicker">A FEW MORE PAGES</span><h2 id="progress-dialog-title">Update progress.</h2></div><button class="modal-close" type="button" data-close-dialog aria-label="Close">×</button></div><input type="hidden" id="progress-id" /><label>How far are you?<div class="range-line"><input id="progress-range" type="range" min="0" max="100" value="42" /><output id="progress-output">42%</output></div></label><label>Or enter a percentage<input id="progress-number" type="number" min="0" max="100" value="42" /></label><div class="modal-actions"><button class="button button-ghost" type="button" data-close-dialog>Cancel</button><button class="button button-dark" value="default">Save progress <span>→</span></button></div></form>
+    </dialog>
+
+    <dialog class="modal compact-modal" id="completion-dialog" aria-labelledby="completion-dialog-title">
+      <form method="dialog" id="completion-form"><div class="modal-heading"><div><span class="section-kicker">ONE LAST NOTE</span><h2 id="completion-dialog-title">You finished a story.</h2></div><button class="modal-close" type="button" data-close-dialog aria-label="Close">×</button></div><input type="hidden" id="completion-id" /><label>How would you rate it? <span class="optional">optional</span><div class="rating-picker" id="rating-picker"><button type="button" data-rating="1">★</button><button type="button" data-rating="2">★</button><button type="button" data-rating="3">★</button><button type="button" data-rating="4">★</button><button type="button" data-rating="5">★</button></div></label><label>A note for future you <span class="optional">optional</span><textarea id="completion-note" rows="3" placeholder="What stayed with you?"></textarea></label><div class="modal-actions"><button class="button button-ghost" type="button" data-close-dialog>Later</button><button class="button button-dark" value="default">Save to reading log <span>→</span></button></div></form>
+    </dialog>
+
+    <dialog class="modal compact-modal" id="confirm-dialog" aria-labelledby="confirm-title">
+      <form method="dialog"><div class="modal-heading"><div><span class="section-kicker">PLEASE CONFIRM</span><h2 id="confirm-title">Remove this?</h2></div><button class="modal-close" type="button" data-close-dialog aria-label="Close">×</button></div><p class="confirm-text" id="confirm-text"></p><div class="modal-actions"><button class="button button-ghost" type="button" data-close-dialog>Keep it</button><button class="button button-danger" id="confirm-ok" value="confirm">Remove</button></div></form>
+    </dialog>
+
+    <div class="toast" id="toast" role="status" aria-live="polite"><span class="toast-check">✓</span><span id="toast-message">Saved</span></div>
+      <script>
+      // Safety net: if app.js never loads, don't leave the reader staring at the loader.
+      setTimeout(function () {
+        var l = document.getElementById("app-loader");
+        if (l && document.body.classList.contains("is-loading")) {
+          document.body.classList.remove("is-loading");
+          l.remove();
+        }
+      }, 8000);
+    </script>
+  </body>
+</html>
