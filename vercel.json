@@ -1,5 +1,5 @@
 {
   "routes": [
-    { "title": "The Midnight Spine" }
+    { "path": "/", "title": "The Midnight Spine" }
   ]
 }
